@@ -9,18 +9,20 @@
 
 
 
-string[] array = new string[] { "hello", "2", "world", ":-)" };
+// string[] array = new string[] { "hello", "2", "world", ":-)" };
 // string[] array = new string[] {"1234", "1567", "-2", "computer science"};
 // string[] array = new string[] {"Russia", "Denmark", "Kazan"};
 
-
-
+int lengthOfArray = InputLengthOfArray();
+string[] array = FillArray(lengthOfArray);
 int lengthArrayToFill = FindLengthArrayToFill(array);
 string[] resultArray = MakeArrayOf1To3Symbol(array);
-PrintArray(array);
-Console.WriteLine();
-PrintArray(resultArray);
 
+PrintArray(array);
+Console.Write(" -> ");
+PrintArray(resultArray);
+Console.WriteLine();
+Console.WriteLine();
 
 
 int FindLengthArrayToFill(string[] arr)
@@ -58,11 +60,40 @@ void PrintArray(string[] arr)
     {
         if (i < arr.Length - 1)
         {
-            Console.Write($"{arr[i]}\", ");
+            Console.Write($"\"{arr[i]}\", ");
         }
         else
         {
-            Console.Write($"{arr[i]}\"]");
+            Console.Write($"\"{arr[i]}\"");
         }
+
     }
+    Console.Write("]");
+}
+
+
+string[] FillArray(int length)
+{
+    string[] arr = new string[length];
+    for (int i = 0; i < length; i++)
+    {
+        Console.Write($"Введите элемент массива №{i + 1}: ");
+        arr[i] = Console.ReadLine();
+    }
+    Console.WriteLine();
+    return arr;
+}
+
+int InputLengthOfArray()
+{
+    Console.WriteLine();
+    Console.Write("Введите длину исходного массива: ");
+    int lengthOfArr = Convert.ToInt32(Console.ReadLine());
+    while (lengthOfArr < 0)
+    {
+        Console.Write("Введите натурально число, либо 0: ");
+        lengthOfArr = Convert.ToInt32(Console.ReadLine());
+    }
+    Console.WriteLine();
+    return lengthOfArr;
 }
