@@ -7,39 +7,62 @@
 // ["1234", "1567", "-2", "computer science"] -> ["-2"]
 // ["Russia", "Denmark", "Kazan"] -> []
 
-//           СДЕЛАТЬ МЕТОДАМИ
 
-// string[] array = new string[] {"hello", "2", "world", ":-)"};
+
+string[] array = new string[] { "hello", "2", "world", ":-)" };
 // string[] array = new string[] {"1234", "1567", "-2", "computer science"};
-string[] array = new string[] {"Russia", "Denmark", "Kazan"};
+// string[] array = new string[] {"Russia", "Denmark", "Kazan"};
 
-int counterElement = default;
-for (int i = 0; i < array.Length; i++)
+
+
+int lengthArrayToFill = FindLengthArrayToFill(array);
+string[] resultArray = MakeArrayOf1To3Symbol(array);
+PrintArray(array);
+Console.WriteLine();
+PrintArray(resultArray);
+
+
+
+int FindLengthArrayToFill(string[] arr)
 {
-    if (array[i].Length <= 3) counterElement = counterElement + 1; 
-}
-
-// Console.WriteLine(counterElement);
-// Console.WriteLine();
-
-string[] arrayOf1To3Symbol = new string[counterElement];
-
-// for (int i = 0; i < arrayOf1To3Symbol.Length; i++)
-// {
-//    Console.WriteLine($"[{arrayOf1To3Symbol[i]}]");
-// }
-
-int j = 0;
-for (int i = 0; i < array.Length; i++)
-{
-    if (array[i].Length <= 3)
+    int counterElement = 0;
+    for (int i = 0; i < arr.Length; i++)
     {
-        arrayOf1To3Symbol[j] = array[i];
-        j++;
+        if (array[i].Length <= 3) counterElement = counterElement + 1;
     }
+    return counterElement;
 }
 
-for (int i = 0; i < arrayOf1To3Symbol.Length; i++)
+
+string[] MakeArrayOf1To3Symbol(string[] arr)
 {
-   Console.WriteLine($"[{arrayOf1To3Symbol[i]}]");
+    string[] arrayOf1To3Symbol = new string[lengthArrayToFill];
+
+    int j = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length <= 3)
+        {
+            arrayOf1To3Symbol[j] = arr[i];
+            j++;
+        }
+    }
+    return arrayOf1To3Symbol;
+}
+
+
+void PrintArray(string[] arr)
+{
+    Console.Write("[");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (i < arr.Length - 1)
+        {
+            Console.Write($"{arr[i]}\", ");
+        }
+        else
+        {
+            Console.Write($"{arr[i]}\"]");
+        }
+    }
 }
