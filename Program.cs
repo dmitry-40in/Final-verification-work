@@ -25,6 +25,7 @@ Console.WriteLine();
 Console.WriteLine();
 
 
+
 int FindLengthArrayToFill(string[] arr)
 {
     int counterElement = 0;
